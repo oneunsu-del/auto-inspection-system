@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TZ: Asia/Seoul
-      JBNU_ID: ${{ secrets.JBNU_ID }}
-      JBNU_PW: ${{ secrets.JBNU_PW }}
+      ID: ${{ secrets.ID }}
+      PASSWORD: ${{ secrets.PASSWORD }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,7 +51,7 @@ jobs:
       - name: Run script
         run: |
           mkdir -p logs
-          python auto_system.py > logs/run_$(date +'%Y%m%d_%H%M%S').log 2>&1
+          python daily_auto_system.py > logs/run_$(date +'%Y%m%d_%H%M%S').log 2>&1
 
       - name: Upload logs
         if: always()
